@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import UserConv from './UserConv';
 import { Loader2 } from "lucide-react"; 
+
 import useGetConversations from './useGetConversations'
 import axios from 'axios';
 const apis = require("../../apis/apis")
@@ -26,10 +27,23 @@ const Conversations = () => {
   return (
     <div className="py-2 flex flex-col">
       {startloadingButton ? (
-        <div className="text-black fw-bold text-center items-center justify-center">
-          <div className="text-black fw-bold text-center items-center justify-center">
-            <Loader2 className="animate-spin" />
-            Loading Users...
+        // <div className="text-black fw-bold text-center items-center justify-center">
+        //   <div className="text-black fw-bold text-center items-center justify-center">
+        //     <Loader2 className="animate-spin items-center justify-center" />
+        //     Loading Users...
+        //   </div>
+        // </div>
+        <div class="flex animate-pulse space-x-4">
+          <div class="size-10 rounded-full bg-gray-200"></div>
+          <div class="flex-1 space-y-6 py-1">
+            <div class="h-2 rounded bg-gray-200"></div>
+            <div class="space-y-3">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="col-span-2 h-2 rounded bg-gray-200"></div>
+                <div class="col-span-1 h-2 rounded bg-gray-200"></div>
+              </div>
+              <div class="h-2 rounded bg-gray-200"></div>
+            </div>
           </div>
         </div>
       ) : (
