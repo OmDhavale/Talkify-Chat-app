@@ -3,9 +3,11 @@ import UserConv from './UserConv';
 import useGetConversations from './useGetConversations'
 import axios from 'axios';
 const apis = require("../../apis/apis")
+import { Loader2 } from "lucide-react"; 
 const Conversations = () => {
   // const {conversations} = useGetConversations();
   // console.log("CONVERSATIONS:", conversations)
+  const [startloadingButton, setStartLoadingButton] = useState({});
   const [conversations, setConversations] = useState([]);
       useEffect(() => {
         console.log("hello")
@@ -13,6 +15,7 @@ const Conversations = () => {
           .get(apis.getUsersAPI)
           .then((result) => {
             setConversations(result.data);
+            setStartLoadingButton(0);
             console.log(result)
           })
           .catch((err) => {
@@ -20,13 +23,17 @@ const Conversations = () => {
           });
       }, []);
   return (
-    
     <div className="py-2 flex flex-col">
-      {conversations.map((conversation)=>(
-        <UserConv
-          key = {conversation._id}
-          conversation = {conversation}
-        />
+      {startloadingButton ? (
+        <>
+          <Loader2 className="animate-spin" />
+          Loading Users...
+        </>
+      ) : (
+        name
+      )}
+      {conversations.map((conversation) => (
+        <UserConv key={conversation._id} conversation={conversation} />
       ))}
       {/* <button onClick={handleClick()}>Click</button> */}
     </div>

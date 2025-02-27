@@ -5,7 +5,7 @@ import useListenMessages from './useListenMessages';
 
 const apis = require("../../apis/apis")
 const MessageContainer = () => {
-  const { messages = [] } = useGetMessages();
+  const { messages  } = useGetMessages();
   useListenMessages()
   const lastMessageRef = useRef()
   useEffect(()=>{
