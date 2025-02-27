@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import UserConv from './UserConv';
+import { Loader2 } from "lucide-react"; 
 import useGetConversations from './useGetConversations'
 import axios from 'axios';
 const apis = require("../../apis/apis")
-import { Loader2 } from "lucide-react"; 
+
 const Conversations = () => {
   // const {conversations} = useGetConversations();
   // console.log("CONVERSATIONS:", conversations)
