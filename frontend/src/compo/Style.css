@@ -1,0 +1,57 @@
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h2 {
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color:#c8c5ff;
+  text-color:rgba(0, 0, 0, 0.1);
+}
+::placeholder {
+    color: rgba(0, 0, 0, 0.1);
+}
+/* .form button {
+  padding: 10px;
+  background-color:#033452;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+.loginbutton{
+  padding: 10px;
+  background-color:#033452;
+  width: 100%;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form a {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.form p {
+  text-align: center;
+}
