@@ -1,4 +1,4 @@
-//const host = "http://localhost:4000";
+//export const host = "http://localhost:4000";
 export const host = "https://talkify-chat-app-b0x0.onrender.com";
 export const signinAPI = `${host}/signin`;
 export const signupAPI = `${host}/signup`;

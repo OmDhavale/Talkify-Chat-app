@@ -1,13 +1,13 @@
-
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 //const { chats } = require("./data/data")
 
-
 const cors = require("cors");
 const { app, server } = require("./socket/socket.js");
 
+//const __dirname = path.resolve();
 // const corsOptions = {
 //   origin: ["http://localhost:3000","http://localhost:3000/chats"], ////for running locally
 //   methods: ["GET","POST","PUT","DELETE"],
@@ -20,14 +20,17 @@ const { app, server } = require("./socket/socket.js");
 //   optionSuccessStatus: 200,
 // };
 //app.use(cors(corsOptions));
+
+
+//Deploy
 const corsOptions = {
   origin: "https://talkify-chat-y98m.onrender.com",
-  
+
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization",
 };
- app.use(cors(corsOptions));
-//app.use(cors())
+app.use(cors(corsOptions));
+// app.use(cors())
 app.use(express.json());
 require("dotenv").config();
 // // ✅ Handle Preflight Requests Correctly
@@ -39,11 +42,9 @@ require("dotenv").config();
 //     res.sendStatus(200);
 // });
 
-
-
 //mongoose.connect("mongodb://localhost/talkifydb"); //for local running
-console.log(process.env.MONGODB_URI)
-mongoose.connect( process.env.MONGODB_URI );
+console.log(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 db.on("error", () => {
   console.log("Error while connecting to DB");
@@ -53,6 +54,7 @@ db.once("open", () => {
 });
 
 app.use(cookieParser());
+
 /**
  * Stitch the route to the server
  */
@@ -65,6 +67,11 @@ require("./routes/message.route.js")(app);
 //   res.json({ message: "CORS should work now!" });
 // });
 require("./routes/users.route.js")(app);
+
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
 const PORT = process.env.PORT;
 //const PORT = 4000 || process.env.PORT;
 //const PORT = process.env.PORT
