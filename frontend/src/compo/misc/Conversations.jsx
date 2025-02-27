@@ -26,12 +26,12 @@ const Conversations = () => {
   return (
     <div className="py-2 flex flex-col">
       {startloadingButton ? (
-        <>
+        <div className="text-black fw-bold text-center items-center justify-center">
           <Loader2 className="animate-spin" />
           <div className="text-black fw-bold text-center items-center justify-center">
             Loading Users...
           </div>
-        </>
+        </div>
       ) : (
         <></>
       )}
