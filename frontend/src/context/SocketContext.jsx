@@ -13,11 +13,11 @@ export const SocketContextProvider = ({children})=>{
     const {authUser} = useAuthContext()
     useEffect(()=>{
         if(authUser){
-            const socket = io("http://localhost:4000",{
-                query:{
-                    userId: authUser.senderID
-                }
-            })
+            const socket = io("https://talkify-chat-app-b0x0.onrender.com", {
+              query: {
+                userId: authUser.senderID,
+              },
+            });
             setSocket(socket)
 
             socket.on("getOnlineUsers",(users)=>{

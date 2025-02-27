@@ -21,7 +21,7 @@ const { app, server } = require("./socket/socket.js");
 // };
 //app.use(cors(corsOptions));
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://talkify-chat-y98m.onrender.com",
   credentials: true,
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization",
