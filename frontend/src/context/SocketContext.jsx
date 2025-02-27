@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client"
+const apis = require("../apis/apis")
 const SocketContext = createContext()
 
 export const useSocketContext = () =>{
@@ -13,7 +14,7 @@ export const SocketContextProvider = ({children})=>{
     const {authUser} = useAuthContext()
     useEffect(()=>{
         if(authUser){
-            const socket = io("https://talkify-chat-app-b0x0.onrender.com", {
+            const socket = io(apis.host, {
               query: {
                 userId: authUser.senderID,
               },

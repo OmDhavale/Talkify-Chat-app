@@ -5,10 +5,11 @@ const useGetConversations = ()=>{
     const [conversations,setConversations]= useState([])
     useEffect(()=>{
         
-              axios.get("http://localhost:4000/get/users").then((result) => {
-                console.log(result);
-                setConversations(result.data);
-              });
+              // axios.get("http://localhost:4000/get/users").then((result) => {
+                axios.get(apis.getUsersAPI).then((result) => {
+                  console.log(result);
+                  setConversations(result.data);
+                });
             
     },[])
 
