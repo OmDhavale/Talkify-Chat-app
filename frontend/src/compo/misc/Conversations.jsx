@@ -30,7 +30,7 @@ const Conversations = () => {
           Loading Users...
         </>
       ) : (
-        name
+        <></>
       )}
       {conversations.map((conversation) => (
         <UserConv key={conversation._id} conversation={conversation} />
