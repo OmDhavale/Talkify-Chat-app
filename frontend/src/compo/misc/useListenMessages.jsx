@@ -10,7 +10,7 @@ const useListenMessages = () => {
 
   useEffect(()=>{
     socket?.on("newMessage",(newMessage)=>{
-        setMessages([...messages,newMessage])
+        Array.isArray(messages)?setMessages([...messages,newMessage]):setMessages([newMessage])
     })
 
     return ()=>{
