@@ -28,7 +28,9 @@ const Conversations = () => {
       {startloadingButton ? (
         <>
           <Loader2 className="animate-spin" />
-          Loading Users...
+          <div className="text-black fw-bold text-center items-center justify-center">
+            Loading Users...
+          </div>
         </>
       ) : (
         <></>

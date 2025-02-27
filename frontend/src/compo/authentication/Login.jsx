@@ -59,7 +59,7 @@ const Login = () => {
             );
 
             setAuthUser({ senderID, email, password });  
-          }, 2000);
+          }, 1000);
           
         }
       })
