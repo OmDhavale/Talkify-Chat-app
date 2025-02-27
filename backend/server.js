@@ -22,12 +22,12 @@ const { app, server } = require("./socket/socket.js");
 //app.use(cors(corsOptions));
 const corsOptions = {
   origin: "https://talkify-chat-y98m.onrender.com",
-  credentials: true,
+  
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: "Content-Type, Authorization",
 };
  app.use(cors(corsOptions));
-app.use(cors())
+//app.use(cors())
 app.use(express.json());
 require("dotenv").config();
 // // ✅ Handle Preflight Requests Correctly
