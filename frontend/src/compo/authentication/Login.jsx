@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "../Style.css";
 import { Button } from "@chakra-ui/react";
@@ -10,14 +9,14 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { Loader2 } from "lucide-react";
-const apis = require("../../apis/apis")
+const apis = require("../../apis/apis");
 const Login = () => {
-  const {authUser,setAuthUser} = useAuthContext()
+  const { authUser, setAuthUser } = useAuthContext();
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   //const [loading, setloading] = useState(false)
   const handleClick = () => setShow(!show);
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   //for Login
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -37,13 +36,13 @@ const Login = () => {
     const email = loginInfo.email;
     const password = loginInfo.password;
     //setSpinner(true);
-    setLoading(true)
+    setLoading(true);
     axios
       .post(apis.signinAPI, { email, password })
       .then((result) => {
         //loading = true
         console.log(result.data.userID);
-        const senderID = result.data.userID
+        const senderID = result.data.userID;
         if (result.data.message === "User logged in succesful !") {
           toast.success("Login succesful !", {
             position: "top-center",
@@ -56,14 +55,13 @@ const Login = () => {
           });
           setLoading(false);
           // setTimeout(() => {
-            localStorage.setItem(
-              "chat-user",
-              JSON.stringify({ senderID, email, password })
-            );
+          localStorage.setItem(
+            "chat-user",
+            JSON.stringify({ senderID, email, password })
+          );
 
-            setAuthUser({ senderID, email, password });  
+          setAuthUser({ senderID, email, password });
           // }, 1000);
-          
         }
       })
       .catch((err) => {
@@ -80,7 +78,6 @@ const Login = () => {
         });
         setLoading(false);
       });
-      
   };
 
   return (
@@ -130,12 +127,12 @@ const Login = () => {
           {loading ? (
             <div className="text-white fw-bold text-center items-center justify-center">
               <Loader2 className="animate-spin" />
-              Please wait
             </div>
           ) : (
-            <></>
+            <div className="text-white fw-bold text-center items-center justify-center">
+              LogIn
+            </div>
           )}
-          LogIn
         </Button>
         <Button
           type="button"
@@ -157,6 +154,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;
