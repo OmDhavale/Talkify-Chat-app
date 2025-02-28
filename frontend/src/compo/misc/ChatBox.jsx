@@ -19,7 +19,7 @@ const ChatBox = () => {
   },[setSelectedConversation])
 
   return (
-    <div className="grid w-full bg-indigo-900">
+    <div className="grid w-full bg-blue-800 rounded-md">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
