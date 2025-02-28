@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 //import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { useAuthContext } from "../../context/AuthContext";
+import { Loader2 } from "lucide-react";
 const apis = require("../../apis/apis")
 const Login = () => {
   const {authUser,setAuthUser} = useAuthContext()
@@ -16,7 +17,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
   //const [loading, setloading] = useState(false)
   const handleClick = () => setShow(!show);
-
+  const [loading,setLoading] = useState(false)
   //for Login
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -36,6 +37,7 @@ const Login = () => {
     const email = loginInfo.email;
     const password = loginInfo.password;
     //setSpinner(true);
+    setLoading(true)
     axios
       .post(apis.signinAPI, { email, password })
       .then((result) => {
@@ -52,14 +54,15 @@ const Login = () => {
             draggable: true,
             progress: undefined,
           });
-          setTimeout(() => {
+          setLoading(false);
+          // setTimeout(() => {
             localStorage.setItem(
               "chat-user",
               JSON.stringify({ senderID, email, password })
             );
 
             setAuthUser({ senderID, email, password });  
-          }, 1000);
+          // }, 1000);
           
         }
       })
@@ -75,6 +78,7 @@ const Login = () => {
           draggable: true,
           progress: undefined,
         });
+        setLoading(false);
       });
       
   };
@@ -123,6 +127,14 @@ const Login = () => {
           borderRadius={"8px"}
           onClick={handleSubmit}
         >
+          {loading ? (
+            <div className="text-white fw-bold text-center items-center justify-center">
+              <Loader2 className="animate-spin" />
+              Please wait
+            </div>
+          ) : (
+            <></>
+          )}
           LogIn
         </Button>
         <Button
