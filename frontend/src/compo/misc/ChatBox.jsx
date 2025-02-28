@@ -25,7 +25,7 @@ const ChatBox = () => {
       ) : (
         <>
           {/* the title bar */}
-          <div className="bg-indigo-950 px-4 py-3 mb-2 rounded-md h-14">
+          <div className="bg-cyan-800 px-4 py-3 mb-2 rounded-md h-14">
             {/* <button className={"text-white"}onClick={setSelectedConversation("")}>Back</button> */}
             <button
               className="text-white hover:text-blue-700"

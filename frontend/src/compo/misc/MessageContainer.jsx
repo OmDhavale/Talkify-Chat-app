@@ -29,7 +29,10 @@ const MessageContainer = () => {
   </div>
 ))}
 
-      {messages.length === 0 && <p>Send a message to start conversation</p>}
+      {messages.length === 0 && 
+      <div className="text-white fw-bold text-center items-center justify-center">Send a message to start conversation
+      </div>
+      }
     </div>
   );
 }
