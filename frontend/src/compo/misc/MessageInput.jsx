@@ -5,12 +5,13 @@ import { LuSend } from "react-icons/lu";
 import useConversation from "../../zustand/useConversations";
 import useSendMessage from "./useSendMessage";
 import { useAuthContext } from "../../context/AuthContext";
+import { Loader2 } from "lucide-react";
 const apis = require("../../apis/apis")
 const MessageInput = () => {
 
 const {authUser} = useAuthContext()
   //for Login
-
+    const [loading, setLoading] = useState(false);
   const {messages,setMessages, selectedConversation} = useConversation()
   const [mInfo, setmInfo] = useState({
     senderID:"",
@@ -37,7 +38,8 @@ const {authUser} = useAuthContext()
   if(!chat) return
   const senderID = authUser.senderID;
   const receiverID = selectedConversation._id;
-  console.log({ senderID, receiverID, chat });
+  // console.log({ senderID, receiverID, chat });
+   setLoading(true);
     axios
       .post(
         apis.sendMessageAPI,
@@ -48,11 +50,14 @@ const {authUser} = useAuthContext()
         
       )
       .then((result) => {
-        console.log("Msg sent: ",result.data);
+        setLoading(false);
+        // console.log("Msg sent: ",result.data);
         setMessages([...messages,result.data])
         setmInfo({ ...mInfo, chat: "" });
+        
       })
       .catch((err)=>{
+        setLoading(false);
         console.log("Error: ",err)
       })
       // .finally(()=>{
@@ -85,7 +90,16 @@ const {authUser} = useAuthContext()
         borderRadius={"40px"}
         onClick={handleSubmit}
       >
-        <LuSend />
+        
+        {loading ? (
+            <div className="text-white fw-bold text-center items-center justify-center">
+              <Loader2 className="animate-spin" />
+            </div>
+          ) : (
+            <div className="text-white text-center items-center justify-center">
+              <LuSend />
+            </div>
+          )}
       </Button>
       {/* </form> */}
     </div>
