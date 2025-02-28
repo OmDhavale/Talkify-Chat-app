@@ -19,11 +19,12 @@ const ChatBox = () => {
   },[setSelectedConversation])
 
   return (
-    <div className="grid w-full bg-cyan-950 rounded-md">
+    // <div className="grid w-full bg-cyan-950 rounded-md">
+    <div>
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
-        <>
+        <div className="grid w-full bg-cyan-950 rounded-md">
           {/* the title bar */}
           <div className="bg-cyan-800 px-4 py-3 mb-2 rounded-md h-14">
             {/* <button className={"text-white"}onClick={setSelectedConversation("")}>Back</button> */}
@@ -49,7 +50,7 @@ const ChatBox = () => {
           <div className="mt-auto">
             <MessageInput />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
