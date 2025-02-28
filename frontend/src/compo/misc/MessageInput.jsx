@@ -80,7 +80,7 @@ const {authUser} = useAuthContext()
         onChange={handleChange}
         placeholder="Type a Message..."
         borderRadius="20px"
-      >
+      />
       
       <Button
         type="button"
@@ -101,7 +101,6 @@ const {authUser} = useAuthContext()
             </div>
           )}
       </Button>
-      </Input>
       {/* </form> */}
     </div>
   );
