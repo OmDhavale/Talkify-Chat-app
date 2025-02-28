@@ -58,11 +58,11 @@ const ChatBox = () => {
 export default ChatBox
 
 const NoChatSelected=()=>{
-  const {authUser} = useAuthContext()
-  const [isExpanded, setIsExpanded] = useState(false);
+  // const {authUser} = useAuthContext()
+  // const [isExpanded, setIsExpanded] = useState(false);
   return (
     // <div className="grid w-full bg-indigo-900 items-center justify-center">
-    <div className="grid w-full bg-indigo-900">
+    // <div className="grid w-full bg-indigo-900">
       <div className="text-white justify-center">
         {/* <h3>Welcome {authUser.email} 👋</h3>
         <h4>Select a chat to start messaging</h4>
@@ -86,6 +86,6 @@ const NoChatSelected=()=>{
           <SearchInput />
         {/* </motion.div> */}
       </div>
-    </div>
+    // </div>
   );
 }
