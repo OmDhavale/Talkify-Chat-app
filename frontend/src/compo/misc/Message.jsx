@@ -9,7 +9,7 @@ const Message = ({message}) => {
   
   const fromMe = message.senderID === authUser.senderID
   const chatClassName = fromMe ? 'chat-end':'chat-start'
-  const bubbleBgColor = fromMe ? "bg-teal-500" : "bg-indigo-500";
+  const bubbleBgColor = fromMe ? "bg-teal-700" : "bg-indigo-700";
 
   const formattedTime = extractTime(message.createdAt)
   console.log(message);
